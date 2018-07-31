@@ -4,11 +4,6 @@
     <short-name>taglib</short-name>
     <uri>/WEB-INF/taglib</uri>
     <tag>
-        <name>messages</name>
-        <tag-class>team.tag.MessageTag</tag-class>
-        <body-content>empty</body-content>
-    </tag>
-    <tag>
         <name>getresource</name>
         <tag-class>team.tag.ResourceTag</tag-class>
         <body-content>empty</body-content>
@@ -16,16 +11,6 @@
             <name>key</name>
             <required>true</required>
             <rtexprvalue>false</rtexprvalue>
-        </attribute>
-    </tag>
-    <tag>
-        <name>languagemenu</name>
-        <tag-class>team.tag.LanguageMenuTag</tag-class>
-        <body-content>empty</body-content>
-        <attribute>
-            <name>forwardString</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
 </taglib>
