@@ -8,56 +8,31 @@
         <servlet-name>ServletController</servlet-name>
         <servlet-class>team.controller.ServletController</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>ServletController</servlet-name>
         <url-pattern>/controller</url-pattern>
     </servlet-mapping>
-
-    <!-- test servlet -->
-    <servlet>
-        <servlet-name>Test</servlet-name>
-        <servlet-class>team.servlet.Test</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Test</servlet-name>
-        <url-pattern>/test</url-pattern>
-    </servlet-mapping>
-
+         
     <!-- session -->
     <session-config>
         <session-timeout>300</session-timeout>
     </session-config>
-    <!--welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list-->
+         
     <error-page>
         <error-code>404</error-code>
         <location>/jsp/error1.jsp</location>
-    </error-page>
+    </error-page>     
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
-        <location>/jsp/error1.jsp</location>
+        <location>/jsp/error1.jsp</location>        
     </error-page>
-
-    <!-- filter -->
-    <!--filter>
-        <filter-name>CharacterEncodingFilter</filter-name>
-        <filter-class>team.filter.CharacterEncodingFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>CharacterEncodingFilter</filter-name>
-        <servlet-name>ServletController</servlet-name>
-    </filter-mapping-->
-
+         
     <filter>
         <filter-name>SessionCheckFilter</filter-name>
         <filter-class>team.filter.SessionCheckFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>SessionCheckFilter</filter-name>
-        <!--url-pattern>/app/*</url-pattern-->
-        <url-pattern>/jsp/main.jsp</url-pattern> <!-- url from where you implement the filtering -->
+        <url-pattern>/jsp/main.jsp</url-pattern>
     </filter-mapping>
 </web-app>
