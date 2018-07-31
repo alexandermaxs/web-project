@@ -7,7 +7,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
-import team.service.DBPropertiesManager;
+import team.service.DBPropertyManager;
 import team.exception.ExceptionConstant;
 import team.exception.ConnectionPoolException;
 
@@ -20,7 +20,7 @@ public class ConnectionPool {
 	private static ConnectionPool instance;
 	private BlockingQueue<Connection> freeConnections;
 	private BlockingQueue<Connection> busyConnections;
-	DBPropertiesManager dbPropertiesManager;
+	DBPropertyManager dbPropertyManager;
 
 	public static synchronized ConnectionPool getInstance()
 			throws ConnectionPoolException {
@@ -31,19 +31,19 @@ public class ConnectionPool {
 	}
 
 	private ConnectionPool() throws ConnectionPoolException {
-		dbPropertiesManager = DBPropertiesManager.getInstance();
-		int size = Integer.parseInt(dbPropertiesManager.getValue(DBParameter.DB_POOLSIZE));
+		dbPropertyManager = DBPropertyManager.getInstance();
+		int size = Integer.parseInt(dbPropertyManager.getValue(DBParameter.DB_POOLSIZE));
 		freeConnections = new ArrayBlockingQueue<>(size);
 		busyConnections = new ArrayBlockingQueue<>(size);
 
 		try {
-			Class.forName(dbPropertiesManager.getValue(DBParameter.DB_DRIVER));
+			Class.forName(dbPropertyManager.getValue(DBParameter.DB_DRIVER));
 
 			for (int i = 0; i < size; i++) {
 				Connection connection = DriverManager.getConnection(
-						dbPropertiesManager.getValue(DBParameter.DB_URL),
-						dbPropertiesManager.getValue(DBParameter.DB_USER),
-						dbPropertiesManager.getValue(DBParameter.DB_PASSWORD));
+						dbPropertyManager.getValue(DBParameter.DB_URL),
+						dbPropertyManager.getValue(DBParameter.DB_USER),
+						dbPropertyManager.getValue(DBParameter.DB_PASSWORD));
 				freeConnections.add(connection);
 			}
 		} catch (ClassNotFoundException e) {
