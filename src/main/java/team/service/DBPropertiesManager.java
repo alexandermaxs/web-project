@@ -4,8 +4,9 @@ import java.util.ResourceBundle;
 
 public class DBPropertiesManager {
 	private final static DBPropertiesManager instance = new DBPropertiesManager();
+	public static final String DB_RESOURCE_LOCATION = "db";
 
-	private ResourceBundle bundle = ResourceBundle.getBundle(LocationConstant.DB_RESOURCE_LOCATION);
+	private ResourceBundle bundle = ResourceBundle.getBundle(DB_RESOURCE_LOCATION);
 
 	public static DBPropertiesManager getInstance() {
 		return instance;
