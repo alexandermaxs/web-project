@@ -32,7 +32,7 @@
         </table>
         </c:if>
     </div>
-    <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
+    <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding w3-bottom">
         <button class="w3-btn w3-round-large w3-white" onclick="location.href='/controller?commandName=MANAGER_MENU'"><fmt:message key="page.backMenu"/></button>
     </div>
 </body>

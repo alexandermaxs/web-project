@@ -15,14 +15,22 @@
     <h1><fmt:message key="page.greetings"/> <fmt:message key="page.manager"/> ${user.name}!</h1>
 </div>
 
-<div class="w3-container w3-center">
-    <div class="w3-bar w3-padding-large w3-padding-24">
-        <button class="w3-btn w3-hover-red w3-round-large w3-light-blue" onclick="location.href='/controller?commandName=FORM_PROJECT'"><fmt:message key="page.formTT"/></button>
-        <button class="w3-btn w3-hover-red w3-round-large w3-light-blue" onclick="location.href='/controller?commandName=SHOW_PROJECTS'"><fmt:message key="page.showProjects"/></button>
+<br>
+<div class="w3-container w3-center w3-margin-bottom w3-padding">
+    <div class="w3-card-4">
+        <div class="w3-container w3-opacity w3-light-blue">
+            <h2><fmt:message key="page.actionMenu"/></h2>
+        </div>
+        <ul class="w3-ul">
+            <li class="w3-hover-sand" onclick="location.href='/controller?commandName=SHOW_PROJECTS'"><fmt:message key="page.showProjects"/></li>
+            <li class="w3-hover-sand" onclick="location.href='/controller?commandName=SHOW_TASKS'"><fmt:message key="page.showTasks"/></li>
+            <li class="w3-hover-sand" onclick="location.href='/controller?commandName=FREE_DEVELOPERS'"><fmt:message key="page.showFreeDevelopers"/></li>
+            <li class="w3-hover-sand" onclick="location.href='/controller?commandName=FORM_TASK'"><fmt:message key="page.formTT"/></li>
+        </ul>
     </div>
 </div>
 
-<div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
+<div class="w3-container w3-grey w3-opacity w3-right-align w3-padding w3-bottom">
     <button class="w3-btn w3-round-large w3-white" onclick="location.href='/controller?commandName=EXIT'"><fmt:message key="page.logout"/></button>
 </div>
 </body>

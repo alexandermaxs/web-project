@@ -12,17 +12,14 @@
 </head>
 <body class="w3-light-grey">
 <div class="w3-container w3-red w3-opacity w3-center">
-    <h1>An error has been occurred!</h1>
+    <h1><fmt:message key="page.error"/></h1>
 </div>
 <div class="w3-container w3-center">
-    <div class="messages">
-        <tag :messages/>
-    </div>
     <div class="w3-bar w3-padding-large w3-padding-24">
         <form action="controller">
-            <input name="forwardPage" type="hidden" value="/index.html"/>
+            <input name="forwardPage" type="hidden" value="/index.jsp"/>
             <input type="hidden" name="commandName" value="TO_PAGE" />
-            <button class="w3-btn w3-hover-light-blue w3-round-large w3-red" type="submit">forward</button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large w3-red" type="submit"><fmt:message key="page.backMain"/></button>
         </form>
     </div>
 </div>

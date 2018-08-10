@@ -17,13 +17,23 @@
 
         <div class="w3-container w3-center">
             <div class="w3-bar w3-padding-large w3-padding-24">
-                <button class="w3-btn w3-hover-red w3-round-large w3-light-blue" onclick="location.href='/controller?commandName=FORM_PROJECT'"><fmt:message key="page.formTT"/></button>
-                <button class="w3-btn w3-hover-red w3-round-large w3-light-blue" onclick="location.href='/controller?commandName="><fmt:message key="page.currentProjects"/></button>
+                <button class="w3-btn w3-hover-red w3-round-large w3-blue" onclick="location.href='/controller?commandName=FORM_PROJECT'"><fmt:message key="page.addProject"/></button>
+                <form action="controller" class="w3-selection w3-light-grey w3-padding">
+                    <table class="w3-centered">
+                        <tr>
+                            <td>
+                                <input type="hidden" name="userId" value="${user.id}" />
+                                <input type="hidden" name="commandName" value="CURRENT_TASK" />
+                                <button type="submit" class="w3-btn w3-hover-red w3-round-large w3-blue"><fmt:message key="page.currentProjectsAnd"/></button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
             </div>
 
         </div>
 
-        <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
+        <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding w3-bottom">
             <button class="w3-btn w3-round-large w3-white" onclick="location.href='/controller?commandName=EXIT'"><fmt:message key="page.logout"/></button>
         </div>
     </body>

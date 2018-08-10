@@ -12,14 +12,14 @@
 </head>
 <body class="w3-light-grey">
 <div class="w3-container w3-blue-grey w3-opacity w3-center">
-    <h1>Operation success!</h1>
+    <h1><fmt:message key="page.success"/></h1>
 </div>
 <div class="w3-container w3-center">
     <div class="w3-bar w3-padding-large w3-padding-24">
         <form action="controller">
             <input name="forwardPage" type="hidden" value="/jsp/main.jsp"/>
             <input type="hidden" name="commandName" value="TO_PAGE" />
-            <button class="w3-btn w3-hover-red w3-round-large w3-light-blue" type="submit">forward</button>
+            <button class="w3-btn w3-hover-red w3-round-large w3-light-blue" type="submit"><fmt:message key="page.backMenu"/></button>
         </form>
     </div>
 </div>
