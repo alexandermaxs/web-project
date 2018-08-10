@@ -47,7 +47,6 @@ public class ProjectDAO extends AbstractDAO{
             stm.setDouble(3, project.getCost());
             stm.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new DAOException("Problems with DAO request", e);
         } finally {
             try {
@@ -82,14 +81,14 @@ public class ProjectDAO extends AbstractDAO{
             PreparedStatement stm = connection.prepareStatement(sqlGetAllProjects);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                Project mp = new Project();
-                mp.setCipher(rs.getString("cipher"));
-                mp.setDate(rs.getString("date"));
-                mp.setCost(rs.getDouble("cost"));
-                list.add(mp);
+                Project p = new Project();
+                p.setCipher(rs.getString("cipher"));
+                p.setDate(rs.getString("date"));
+                p.setCost(rs.getDouble("cost"));
+                list.add(p);
             }
         } catch (SQLException e) {
-            throw new DAOException("Problems with DAO request", e);
+            throw new DAOException("Problem with DAO request", e);
         } finally {
             try {
                 super.close();
