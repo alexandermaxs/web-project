@@ -17,7 +17,7 @@ public class AddProject extends Command{
 
     @Override
     public void processRequest(HttpServletRequest request,
-                HttpServletResponse response) throws ServletException, IOException {
+      HttpServletResponse response) throws ServletException, IOException {
         Project project = new Project();
         project.setCipher(request.getParameter(PARAM_CIPHER));
         project.setDate(request.getParameter(PARAM_DATE));

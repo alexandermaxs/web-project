@@ -37,7 +37,30 @@ public class CommandFactory {
 		    case SUCCESS:
                 command = new Success();
 		        break;
-
+            case SHOW_TASKS:
+                command = new ShowTasks();
+                break;
+            case FREE_DEVELOPERS:
+                command = new FreeDevelopers();
+                break;
+            case ASSIGNMENT:
+                command = new Assignment();
+                break;
+            case ADD_TASK:
+                command = new AddTask();
+                break;
+            case DELETE_TASK:
+                command = new DeleteTask();
+                break;
+            case FORM_TASK:
+                command = new FormTask();
+                break;
+            case CURRENT_TASK:
+                command = new CurrentTask();
+                break;
+            case USER_TAG:
+                command = new UserTag();
+                break;
 
             case REGISTRATION:
                 command = new Registration();

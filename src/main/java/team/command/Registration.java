@@ -18,7 +18,7 @@ public class Registration extends Command{
 	private User user;
 	public static final String MSG_ERR_EXIST = "error.login.exist";
     public static final String MSG_USER_CREATED = "message.user.created";
-    public static final String LOGGER_MSG_USER_CREATED = "logger.message.user.has.registred";
+    public static final String LOGGER_MSG_USER_CREATED = "logger.message.user.has.registered";
     public static final String FORWARD_AUTHORIZATION = "forward.authorization";
     public static final String FORWARD_REGISTRATION = "forward.registration";
     public static final String PARAM_USER = "user";
