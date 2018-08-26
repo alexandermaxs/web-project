@@ -9,17 +9,17 @@ import java.util.List;
 import team.exception.DAOException;
 import team.model.bean.Project;
 
-public class ProjectDAO extends AbstractDAO{
-    private String sqlReadByCipher = "SELECT cipher, date, cost FROM team.project WHERE cipher = ?";
-    private String sqlAddProject = "INSERT INTO team.project (cipher, date, cost) VALUES (?, ?, ?)";
-    private String sqlDeleteProjectByCipher = "DELETE FROM team.project WHERE cipher = ?";
-    private String sqlGetAllProjects = "SELECT cipher, date, cost FROM team.project WHERE cipher NOT IN ('SPARE')";
+public class ProjectDAO extends AbstractDAO {
+    private static final String SQL_READ_BY_CIPHER = "SELECT cipher, date, cost FROM team.project WHERE cipher = ?";
+    private static final String SQL_ADD_PROJECT = "INSERT INTO team.project (cipher, date, cost) VALUES (?, ?, ?)";
+    private static final String SQL_DELETE_PROJECT_BY_CIPHER = "DELETE FROM team.project WHERE cipher = ?";
+    private static final String SQL_GET_ALL_PROJECTS = "SELECT cipher, date, cost FROM team.project WHERE cipher NOT IN ('SPARE')";
 
     public Project read(String cipher) throws DAOException {
         Project project = new Project();
         try {
             this.connection = getConnection();
-            PreparedStatement stm = connection.prepareStatement(sqlReadByCipher);
+            PreparedStatement stm = connection.prepareStatement(SQL_READ_BY_CIPHER);
             stm.setString(1, cipher);
             ResultSet rs = stm.executeQuery();
             rs.next();
@@ -41,7 +41,7 @@ public class ProjectDAO extends AbstractDAO{
     public void add(Project project) throws DAOException {
         try {
             this.connection = getConnection();
-            PreparedStatement stm = connection.prepareStatement(sqlAddProject);
+            PreparedStatement stm = connection.prepareStatement(SQL_ADD_PROJECT);
             stm.setString(1, project.getCipher());
             stm.setString(2, project.getDate());
             stm.setDouble(3, project.getCost());
@@ -60,7 +60,7 @@ public class ProjectDAO extends AbstractDAO{
     public void delete(String cipher) throws DAOException {
         try {
             this.connection = getConnection();
-            PreparedStatement stm = connection.prepareStatement(sqlDeleteProjectByCipher);
+            PreparedStatement stm = connection.prepareStatement(SQL_DELETE_PROJECT_BY_CIPHER);
             stm.setString(1, cipher);
             stm.executeUpdate();
         } catch (SQLException e) {
@@ -78,7 +78,7 @@ public class ProjectDAO extends AbstractDAO{
         List<Project> list = new ArrayList<>();
         try {
             this.connection = getConnection();
-            PreparedStatement stm = connection.prepareStatement(sqlGetAllProjects);
+            PreparedStatement stm = connection.prepareStatement(SQL_GET_ALL_PROJECTS);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 Project p = new Project();
