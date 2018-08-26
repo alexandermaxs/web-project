@@ -2,17 +2,18 @@ package team.model.bean;
 
 public class User {
     private int id;
-    private String login = "";
-    private String password = "";
+    private String login;
+    private String password;
     private UserType userType;
-    private int authority = 0;
-    private String name = "";
-    private String info = "";
-    private String date = "";
+    private int authority;
+    private String name;
+    private String info;
+    private String date;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(String login, String password){
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
         this.authority = 1;

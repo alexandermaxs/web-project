@@ -2,19 +2,12 @@ package team.model.bean;
 
 public class Project {
     private int id;
-    private String cipher = "";
+    private String cipher;
     private int customerId;
-    private String date = "";
-    private double cost = 0;
+    private String date;
+    private double cost;
 
-    public Project(){
-    }
-
-    public Project(String cipher, String date, double cost){
-        this.cipher = cipher;
-        this.customerId = 3;
-        this.date = date;
-        this.cost = cost;
+    public Project() {
     }
 
     public int getId() {

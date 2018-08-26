@@ -3,21 +3,12 @@ package team.model.bean;
 public class Task {
     private int id;
     private int projectId;
-    private String info = "";
-    private String date = "";
-    private int number = 0;
-    private String cipher = "";
+    private String info;
+    private String date;
+    private int number;
+    private String cipher;
 
     public Task() {
-    }
-
-    public Task(int id, int projectId, String info, String date, int number, String cipher) {
-        this.id = id;
-        this.projectId = projectId;
-        this.info = info;
-        this.date = date;
-        this.number = number;
-        this.cipher = cipher;
     }
 
     public int getId() {
