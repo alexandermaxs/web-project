@@ -1,21 +1,24 @@
 package team.model;
 
 import java.security.NoSuchAlgorithmException;
+
 import team.model.bean.User;
 import team.model.bean.UserType;
-import team.service.MD5Generator;
-import team.service.MessageManager;
-import team.service.ResourceManager;
+import team.component.MD5Generator;
+import team.component.MessageManager;
+import team.component.ResourceManager;
+
 import javax.servlet.http.HttpServletRequest;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * This class gets user data from request
  * and builds the user
  */
 public class UserBuilder {
-    //private static final Logger LOGGER = LogManager.getLogger(UserBuilder.class);
+    private static final Logger LOGGER = LogManager.getLogger(UserBuilder.class);
     /**
      * This is the user, which will be built
      */
@@ -38,18 +41,20 @@ public class UserBuilder {
      * This method builds up the user
      * Reads all user properties
      * if success, then user is built
+     *
      * @param request a HttpServletRequest
      * @return <code>true</code> if success
      */
     public boolean build(HttpServletRequest request) {
-        boolean readingSuccessful = true;
-        readingSuccessful &= readLogin(request);
+        boolean readingSuccessful;
+        readingSuccessful = readLogin(request);
         readingSuccessful &= readPassword(request);
         return readingSuccessful;
     }
 
     /**
      * This method gets login from the request and check it
+     *
      * @param request a HttpServletRequest
      * @return <code>true</code> if login is correct
      */
@@ -67,6 +72,7 @@ public class UserBuilder {
 
     /**
      * This method gets password from request and check it
+     *
      * @param request a HttpServletRequest
      * @return <code>true</code> if password is equals to confirmed password
      */
@@ -77,7 +83,7 @@ public class UserBuilder {
                 if (password.matches(ResourceManager.getValue("pattern.password"))) {
                     if (password.equals(request.getParameter("password2"))) {
                         MD5Generator md5Generator = new MD5Generator();
-                        String hash = "";
+                        String hash;
 
                         hash = md5Generator.getMD5(password);
 
@@ -89,7 +95,7 @@ public class UserBuilder {
                 }
             }
         } catch (NoSuchAlgorithmException e) {
-            //LOGGER.error(e);
+            LOGGER.error(e);
         }
         messages.addMessage(ResourceManager.getValue("error.pattern.password") + " " + ResourceManager.getValue("pattern.password"));
         return false;
