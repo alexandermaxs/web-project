@@ -5,20 +5,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.security.NoSuchAlgorithmException;
-import team.service.MD5Generator;
+
+import team.component.MD5Generator;
 
 public class MD5GeneratorTest {
     private static final Logger LOGGER = LogManager.getLogger(MD5GeneratorTest.class);
     private MD5Generator md5Generator;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         md5Generator = new MD5Generator();
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         md5Generator = null;
     }
 

@@ -1,6 +1,6 @@
 package team.test;
 
-import team.service.DBPropertyManager;
+import team.component.DBPropertyManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -12,12 +12,12 @@ public class DBPropertyManagerTest {
     private DBPropertyManager dbPropertyManager;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         dbPropertyManager = DBPropertyManager.getInstance();
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         dbPropertyManager = null;
     }
 

@@ -2,7 +2,7 @@ package team.test;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import team.service.ResourceManager;
+import team.component.ResourceManager;
 import org.junit.Test;
 
 public class ResourceManagerTest {
