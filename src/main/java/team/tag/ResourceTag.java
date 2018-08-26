@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,32 +15,31 @@ import org.apache.logging.log4j.Logger;
  * This tag chooses language on attribute <code>language</code> keeping in sessions
  */
 public class ResourceTag extends TagSupport {
-	public static final String RESOURCE_PATH = "resource";
-    public static final String PARAM_LANGUAGE = "language";
-    public static final String NO_RESOURSE = "error.no.resource";
+    private static final String RESOURCE_PATH = "resource";
+    private static final String PARAM_LANGUAGE = "language";
+    private static final String NO_RESOURCE = "error.no.resource";
     /**
-     * This is name of property in resource file  
+     * This is name of property in resource file
      */
     private String key;
     /**
      * This is logger which print some messages to log file
      */
-    private static final Logger LOGGER = LogManager.getLogger(ResourceTag.class);;
+    private static final Logger LOGGER = LogManager.getLogger(ResourceTag.class);
 
     public void setKey(String key) {
         this.key = key;
     }
 
     /**
-     *
      * This method prints a property from resource file by key
      * This method chooses language on attribute <code>language</code> keeping in sessions
      * If attribute <code>language</code> not found it uses a default language
+     *
      * @return SKIP_BODY
-     * @throws JspException
      */
     @Override
-    public int doStartTag() throws JspException {
+    public int doStartTag() {
         String language = (String) pageContext.getSession().getAttribute(PARAM_LANGUAGE);
         Locale locale;
         if (language != null) {
@@ -55,7 +54,7 @@ public class ResourceTag extends TagSupport {
                 writer.print(resource.getString(key));
             } catch (MissingResourceException ex) {
                 LOGGER.error(ex);
-                writer.print(resource.getString(NO_RESOURSE));
+                writer.print(resource.getString(NO_RESOURCE));
             }
         } catch (IOException ex) {
             LOGGER.error(ex);
