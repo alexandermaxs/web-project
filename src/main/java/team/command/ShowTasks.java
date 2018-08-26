@@ -9,24 +9,22 @@ import java.util.List;
 import team.database.dao.TaskDAO;
 import team.exception.DAOException;
 import team.model.bean.Task;
-import team.service.ResourceManager;
+import team.component.ResourceManager;
 
-public class ShowTasks extends Command{
-    private List<Task> tasks;
+public class ShowTasks extends Command {
     private TaskDAO taskDAO = new TaskDAO();
-    public static final String PARAM_LIST = "taskList";
-    public static final String FORWARD = "/jsp/showTasks.jsp";
+    private static final String PARAM_LIST = "taskList";
+    private static final String FORWARD = "/jsp/showTasks.jsp";
 
     @Override
     public void processRequest(HttpServletRequest request,
-       HttpServletResponse response) throws ServletException, IOException {
+                               HttpServletResponse response) throws ServletException, IOException {
         try {
-            tasks = taskDAO.getAllTasks();
+            List<Task> tasks = taskDAO.getAllTasks();
             request.getSession().setAttribute(PARAM_LIST, tasks);
             setForward(FORWARD);
         } catch (DAOException e) {
-            LOGGER.error(e);
-            getMessages().addMessage(ResourceManager.getValue(MSG_DATABASE_ERROR));
+            LOGGER.error(ResourceManager.getValue(MSG_DATABASE_ERROR), e);
             setForward(ResourceManager.getValue(FORWARD_ERROR));
         }
     }

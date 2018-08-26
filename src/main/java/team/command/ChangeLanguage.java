@@ -11,15 +11,16 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ChangeLanguage extends Command {
 
-    public static final String PARAM_LANGUAGE = "language";
-    public static final String PARAM_PAGE = "forwardPage";
+    private static final String PARAM_LANGUAGE = "language";
+    private static final String PARAM_PAGE = "forwardPage";
 
     /**
      * This method changes language of user interface
-     * @param request a httpServletRequest
+     *
+     * @param request  a httpServletRequest
      * @param response a httpServletResponse
      * @throws ServletException a ServletException
-     * @throws IOException a IOException
+     * @throws IOException      a IOException
      */
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

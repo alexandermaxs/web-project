@@ -6,9 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class UserTag extends Command {
+    private static final String FORWARD = "/jsp/userTag.jsp";
+
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String forward = "/jsp/userTag.jsp";
-        setForward(forward);
+        setForward(FORWARD);
     }
 }

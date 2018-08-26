@@ -2,21 +2,22 @@ package team.command;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import javax.servlet.http.HttpServletRequest;
 
 public class CommandFactory {
-	public static final String PARAM_COMMAND = "commandName";
-	private static final Logger LOGGER = LogManager.getLogger(CommandFactory.class);
-	
-	public static Command getCommand(HttpServletRequest request) {
+    private static final String PARAM_COMMAND = "commandName";
+    private static final Logger LOGGER = LogManager.getLogger(CommandFactory.class);
+
+    public static Command getCommand(HttpServletRequest request) {
         Command command = null;
         CommandEnum commandType = getCommandEnum(request.getParameter(PARAM_COMMAND));
-        
-		switch (commandType) {
+
+        switch (commandType) {
             case TO_LOG_IN:
                 command = new ToLogIn();
                 break;
-		    case SHOW_PROJECTS:
+            case SHOW_PROJECTS:
                 command = new ShowProjects();
                 break;
             case MANAGER_MENU:
@@ -33,10 +34,10 @@ public class CommandFactory {
                 break;
             case ADD_PROJECT:
                 command = new AddProject();
-		        break;
-		    case SUCCESS:
+                break;
+            case SUCCESS:
                 command = new Success();
-		        break;
+                break;
             case SHOW_TASKS:
                 command = new ShowTasks();
                 break;
@@ -61,13 +62,6 @@ public class CommandFactory {
             case USER_TAG:
                 command = new UserTag();
                 break;
-
-            case REGISTRATION:
-                command = new Registration();
-                break;
-            case CHANGE_BODY:
-                command = new ChangeBody();
-                break;
             case TO_PAGE:
                 command = new ToPage();
                 break;
@@ -77,23 +71,23 @@ public class CommandFactory {
             case EXIT:
                 command = new Exit();
                 break;
+            case CHANGE_BODY:
+                command = new ChangeBody();
+                break;
             case CHANGE_LANGUAGE:
                 command = new ChangeLanguage();
                 break;
             default:
                 break;
-		}
+        }
         return command;
-	}
-	
+    }
+
     private static CommandEnum getCommandEnum(String commandName) {
-        CommandEnum commandEnum = null;
+        CommandEnum commandEnum;
         try {
             commandEnum = CommandEnum.valueOf(commandName);
-        } catch (IllegalArgumentException e) {
-            commandEnum = CommandEnum.UNKNOWN_COMMAND;
-            LOGGER.error(e);
-        } catch (NullPointerException e) {
+        } catch (IllegalArgumentException | NullPointerException e) {
             commandEnum = CommandEnum.UNKNOWN_COMMAND;
             LOGGER.error(e);
         }

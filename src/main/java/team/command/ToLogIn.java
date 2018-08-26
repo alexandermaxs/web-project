@@ -5,10 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class ToLogIn extends Command{
+public class ToLogIn extends Command {
+    private static final String FORWARD = "/jsp/login.jsp";
+
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String forward = "/jsp/login.jsp";
-        setForward(forward);
+        setForward(FORWARD);
     }
 }
