@@ -18,7 +18,7 @@ public class SessionCheckFilter implements Filter {
     private String contextPath;
 
     @Override
-    public void init(FilterConfig fc) throws ServletException {
+    public void init(FilterConfig fc) {
         contextPath = fc.getServletContext().getContextPath();
     }
 
