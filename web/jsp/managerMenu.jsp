@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="resource" />
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="resource"/>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,17 +23,47 @@
         <div class="w3-container w3-opacity w3-light-blue">
             <h2><fmt:message key="page.actionMenu"/></h2>
         </div>
+
         <ul class="w3-ul">
-            <li class="w3-hover-sand" onclick="location.href='/controller?commandName=SHOW_PROJECTS'"><fmt:message key="page.showProjects"/></li>
-            <li class="w3-hover-sand" onclick="location.href='/controller?commandName=SHOW_TASKS'"><fmt:message key="page.showTasks"/></li>
-            <li class="w3-hover-sand" onclick="location.href='/controller?commandName=FREE_DEVELOPERS'"><fmt:message key="page.showFreeDevelopers"/></li>
-            <li class="w3-hover-sand" onclick="location.href='/controller?commandName=FORM_TASK'"><fmt:message key="page.formTT"/></li>
+            <li>
+                <form action="controller" method="post">
+                    <input type="hidden" name="commandName" value="SHOW_PROJECTS"/>
+                    <button class="w3-btn w3-large w3-white w3-hover-text-blue" type="submit"><fmt:message
+                            key="page.showProjects"/></button>
+                </form>
+            </li>
+            <li>
+                <form action="controller" method="post">
+                    <input type="hidden" name="commandName" value="SHOW_TASKS"/>
+                    <button class="w3-btn w3-large w3-white w3-hover-text-blue" type="submit"><fmt:message
+                            key="page.showTasks"/></button>
+                </form>
+            </li>
+            <li>
+                <form action="controller" method="post">
+                    <input type="hidden" name="commandName" value="FREE_DEVELOPERS"/>
+                    <button class="w3-btn w3-large w3-white w3-hover-text-blue" type="submit"><fmt:message
+                            key="page.showFreeDevelopers"/></button>
+                </form>
+            </li>
+            <li>
+                <form action="controller" method="post">
+                    <input type="hidden" name="commandName" value="FORM_TASK"/>
+                    <button class="w3-btn w3-large w3-white w3-hover-text-blue" type="submit"><fmt:message
+                            key="page.formTT"/></button>
+                </form>
+            </li>
         </ul>
+
     </div>
 </div>
 
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding w3-bottom">
-    <button class="w3-btn w3-round-large w3-white" onclick="location.href='/controller?commandName=EXIT'"><fmt:message key="page.logout"/></button>
+    <form action="controller" method="post">
+        <input type="hidden" name="commandName" value="EXIT"/>
+        <button class="w3-btn w3-round-large w3-white w3-hover-red" type="submit"><fmt:message
+                key="page.logout"/></button>
+    </form>
 </div>
 </body>
 </html>

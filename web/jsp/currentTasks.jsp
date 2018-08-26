@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="resource" />
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="resource"/>
 <html>
 <head>
     <title>current-tasks</title>
@@ -25,10 +27,10 @@
             </tr>
             <c:forEach items="${taskList}" var="task">
                 <tr>
-                    <td><c:out value="${task.info}" /><br/></td>
-                    <td><c:out value="${task.date}" /><br/></td>
-                    <td><c:out value="${task.number}" /><br/></td>
-                    <td><c:out value="${task.cipher}" /><br/></td>
+                    <td><c:out value="${task.info}"/><br/></td>
+                    <td><c:out value="${task.date}"/><br/></td>
+                    <td><c:out value="${task.number}"/><br/></td>
+                    <td><c:out value="${task.cipher}"/><br/></td>
                 </tr>
             </c:forEach>
         </table>
@@ -36,7 +38,11 @@
 </div>
 
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding w3-bottom">
-    <button class="w3-btn w3-round-large w3-white" onclick="location.href='/controller?commandName=CUSTOMER_MENU'"><fmt:message key="page.backMenu"/></button>
+    <form action="controller" method="post">
+        <input type="hidden" name="commandName" value="CUSTOMER_MENU"/>
+        <button class="w3-btn w3-round-large w3-white" type="submit"><fmt:message
+                key="page.backMenu"/></button>
+    </form>
 </div>
 </body>
 </html>
